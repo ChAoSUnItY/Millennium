@@ -14,8 +14,8 @@ public abstract class MillenniumItem extends Item {
     setMaxStackSize(settings.maxCount);
     setMaxDamage(settings.maxDamage);
     setCreativeTab(settings.tab);
-
     rarity = settings.rarity;
+    setTranslationKey(settings.translationKey);
   }
 
   @Override
@@ -23,7 +23,7 @@ public abstract class MillenniumItem extends Item {
     return rarity;
   }
 
-  void registerModel() {
+  protected void registerModel() {
     Millennium.proxy.registerItemRenderer(this, 0, "inventory");
   }
 
@@ -32,6 +32,7 @@ public abstract class MillenniumItem extends Item {
     int maxDamage;
     CreativeTabs tab;
     EnumRarity rarity;
+    String translationKey;
 
     public Settings() {
       rarity = EnumRarity.COMMON;
@@ -49,6 +50,11 @@ public abstract class MillenniumItem extends Item {
 
     public Settings creativeTab(CreativeTabs tab) {
       this.tab = tab;
+      return this;
+    }
+
+    public Settings translationKey(String translationKey) {
+      this.translationKey = translationKey;
       return this;
     }
   }

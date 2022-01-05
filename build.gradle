@@ -40,6 +40,9 @@ repositories {
     maven {
         url "https://repo.spongepowered.org/maven"
     }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 
@@ -54,7 +57,7 @@ dependencies {
         exclude module: "commons-io"
     }
 
-    implementation ("com.google.googlejavaformat:google-java-format:1.13.0") // All IDEA users should install google java formatter as well
+    deobfCompile ("com.github.CleanroomMC:AssetMover:0.2")
 }
 
 processResources {

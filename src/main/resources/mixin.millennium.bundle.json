@@ -5,6 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "millennium.refmap.json",
   "mixins": [
-    "io.github.cleanroommc.millennium.mixin.ContainerMixin"
+    "ContainerMixin"
   ]
 }

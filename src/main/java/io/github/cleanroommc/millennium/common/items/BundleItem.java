@@ -3,6 +3,7 @@ package io.github.cleanroommc.millennium.common.items;
 import com.google.common.collect.Streams;
 import io.github.cleanroommc.millennium.Millennium;
 import io.github.cleanroommc.millennium.client.sounds.BundleSoundEvents;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -22,6 +23,7 @@ import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class BundleItem extends MillenniumItem {
@@ -34,7 +36,7 @@ public class BundleItem extends MillenniumItem {
   private static final int BUNDLE_IN_BUNDLE_WEIGHT = 4;
 
   BundleItem() {
-    super(new Settings().maxDamage(1).creativeTab(CreativeTabs.TOOLS));
+    super(new Settings().maxDamage(1).creativeTab(CreativeTabs.TOOLS).translationKey("bundle"));
   }
 
   private static int getWeight(ItemStack stack) {
@@ -48,7 +50,7 @@ public class BundleItem extends MillenniumItem {
     return getContents(stack).mapToInt(content -> getWeight(content) * content.getCount()).sum();
   }
 
-  private static ItemStack removeOne(ItemStack stack) {
+  public static ItemStack removeOne(ItemStack stack) {
     NBTTagCompound tag = stack.getTagCompound();
     if (tag != null) {
       if (tag.hasKey(TAG, 10)) {
@@ -63,7 +65,7 @@ public class BundleItem extends MillenniumItem {
     return ItemStack.EMPTY;
   }
 
-  private static int addOne(ItemStack bundle, ItemStack add) {
+  public static int addOne(ItemStack bundle, ItemStack add) {
     if (!add.isEmpty()) {
       int currentWeight = getContentWeight(bundle);
       int addWeight = getWeight(add);
@@ -176,5 +178,10 @@ public class BundleItem extends MillenniumItem {
       return EnumActionResult.SUCCESS;
     }
     return EnumActionResult.FAIL;
+  }
+
+  @Override
+  public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    getContents(stack).forEach(s -> tooltip.add(s.getDisplayName() + " x" + s.getMaxStackSize()));
   }
 }

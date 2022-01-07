@@ -1,16 +1,19 @@
 package io.github.cleanroommc.millennium.common.blocks;
 
-import java.util.function.Function;
-import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
+import javax.annotation.Nullable;
+import java.util.function.Function;
 
 public abstract class MillenniumBlock extends Block {
   Settings settings;
@@ -33,6 +36,12 @@ public abstract class MillenniumBlock extends Block {
   @Override
   public boolean isCollidable() {
     return settings.collidable;
+  }
+
+  @Override
+  public BlockFaceShape getBlockFaceShape(
+      IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+    return isOpaqueCube(state) ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
   }
 
   @Override

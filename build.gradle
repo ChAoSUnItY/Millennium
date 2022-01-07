@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        jcenter()
         maven { url = "https://files.minecraftforge.net/maven" }
         maven { url = 'https://repo.spongepowered.org/maven' }
     }
@@ -8,6 +9,7 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
+apply plugin: 'checkstyle' // now we need to define our codestyle ourself
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.

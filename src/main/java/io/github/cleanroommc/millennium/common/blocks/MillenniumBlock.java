@@ -21,6 +21,7 @@ public abstract class MillenniumBlock extends Block {
     setResistance(settings.resistance);
     setHardness(settings.hardness);
     setSoundType(settings.soundType);
+    setTranslationKey(settings.translationKey);
   }
 
   @Override
@@ -59,6 +60,7 @@ public abstract class MillenniumBlock extends Block {
   public static class Settings {
     final Material material;
     final ContextFunction<MapColor> mapColor;
+    String translationKey;
     boolean collidable = true;
     boolean opaque = true;
     float resistance;
@@ -88,6 +90,11 @@ public abstract class MillenniumBlock extends Block {
 
     public Settings nonOpaque() {
       opaque = false;
+      return this;
+    }
+
+    public Settings translationKey(String translationKey) {
+      this.translationKey = translationKey;
       return this;
     }
 

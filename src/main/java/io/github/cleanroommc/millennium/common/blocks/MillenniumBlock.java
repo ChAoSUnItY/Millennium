@@ -7,6 +7,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -61,6 +62,7 @@ public abstract class MillenniumBlock extends Block {
     final Material material;
     final ContextFunction<MapColor> mapColor;
     String translationKey;
+    CreativeTabs tab;
     boolean collidable = true;
     boolean opaque = true;
     float resistance;
@@ -95,6 +97,17 @@ public abstract class MillenniumBlock extends Block {
 
     public Settings translationKey(String translationKey) {
       this.translationKey = translationKey;
+      return this;
+    }
+
+    public Settings creativeTab(CreativeTabs tab) {
+      this.tab = tab;
+      return this;
+    }
+
+    public Settings strength(float strength) {
+      resistance = strength;
+      hardness = strength;
       return this;
     }
 

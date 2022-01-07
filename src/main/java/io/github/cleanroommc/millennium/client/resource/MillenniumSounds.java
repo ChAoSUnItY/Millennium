@@ -8,6 +8,7 @@ public class MillenniumSounds {
     @SideOnly(Side.CLIENT)
     public static void initSounds() {
         AssetHashMap assets = new AssetHashMap("sounds");
+        // Bundle
         assets.put("item/bundle/drop_contents1.ogg");
         assets.put("item/bundle/drop_contents2.ogg");
         assets.put("item/bundle/drop_contents2.ogg");
@@ -18,6 +19,7 @@ public class MillenniumSounds {
         assets.put("item/bundle/remove_one1.ogg");
         assets.put("item/bundle/remove_one2.ogg");
         assets.put("item/bundle/remove_one3.ogg");
+        // Barrel
         AssetMoverAPI.fromMinecraft("1.18.1", assets);
     }
 }

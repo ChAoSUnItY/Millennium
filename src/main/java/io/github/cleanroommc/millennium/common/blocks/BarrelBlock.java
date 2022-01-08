@@ -91,7 +91,18 @@ public class BarrelBlock extends DirectionalBlock implements ITileEntityProvider
 
   @Nullable
   @Override
+  public TileEntity createTileEntity(World world, IBlockState state) {
+    return new BarrelBlockTileEntity();
+  }
+
+  @Nullable
+  @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
     return new BarrelBlockTileEntity();
+  }
+
+  @Override
+  public boolean hasTileEntity(IBlockState state) {
+    return true;
   }
 }

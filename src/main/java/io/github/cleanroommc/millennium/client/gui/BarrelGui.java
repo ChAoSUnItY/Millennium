@@ -4,6 +4,7 @@ import io.github.cleanroommc.millennium.Millennium;
 import io.github.cleanroommc.millennium.common.container.BarrelContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
@@ -13,10 +14,10 @@ public class BarrelGui extends GuiContainer {
   private final IInventory playerInv;
   private final IInventory inventory;
 
-  public BarrelGui(IInventory playerInv, IInventory inventory) {
-    super(new BarrelContainer(playerInv, inventory));
+  public BarrelGui(EntityPlayer player, IInventory inventory) {
+    super(new BarrelContainer(player, inventory));
 
-    this.playerInv = playerInv;
+    this.playerInv = player.inventory;
     this.inventory = inventory;
   }
 

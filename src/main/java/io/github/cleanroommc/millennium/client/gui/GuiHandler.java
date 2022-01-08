@@ -19,7 +19,7 @@ public class GuiHandler implements IGuiHandler {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
         switch (ID) {
             case GUI_BARREL:
-                return new BarrelContainer(player.inventory, (BarrelBlockTileEntity) tileEntity);
+                return new BarrelContainer(player, (BarrelBlockTileEntity) tileEntity);
             default:
                 return null;
         }
@@ -31,7 +31,7 @@ public class GuiHandler implements IGuiHandler {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
         switch (ID) {
             case GUI_BARREL:
-                return new BarrelGui(player.inventory, (BarrelBlockTileEntity) tileEntity);
+                return new BarrelGui(player, (BarrelBlockTileEntity) tileEntity);
             default:
                 return null;
         }

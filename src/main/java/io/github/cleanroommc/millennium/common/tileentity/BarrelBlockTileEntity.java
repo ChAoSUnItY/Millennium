@@ -8,12 +8,17 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.tileentity.TileEntityLockableLoot;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 
-public class BarrelBlockTileEntity extends TileEntityLockableLoot {
+import javax.annotation.Nullable;
+
+public class BarrelBlockTileEntity extends MillenniumLockableLootTileEntity implements ITickable {
+    public int playerUsingCount = 0;
     public NonNullList<ItemStack> inventory = NonNullList.withSize(27, ItemStack.EMPTY);
 
     @Override
@@ -36,13 +41,24 @@ public class BarrelBlockTileEntity extends TileEntityLockableLoot {
     }
 
     @Override
+    public void openInventory(EntityPlayer player) {
+        markDirty();
+    }
+
+    @Override
+    public void closeInventory(EntityPlayer player) {
+        boolean isRemote = world.isRemote;
+        markDirty();
+    }
+
+    @Override
     public int getInventoryStackLimit() {
         return 64;
     }
 
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-        return new BarrelContainer(playerInventory, this);
+        return new BarrelContainer(playerIn, this);
     }
 
     @Override
@@ -53,6 +69,11 @@ public class BarrelBlockTileEntity extends TileEntityLockableLoot {
     @Override
     public String getName() {
         return "container.barrel";
+    }
+
+    @Override
+    public void update() {
+
     }
 
     @Override

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 import java.util.function.Function;
 
 public abstract class MillenniumBlock extends Block {
-  Settings settings;
+  final Settings settings;
 
   public MillenniumBlock(Settings settings) {
     super(settings.material, settings.material.getMaterialMapColor());
@@ -30,7 +30,7 @@ public abstract class MillenniumBlock extends Block {
 
   @Override
   public boolean isOpaqueCube(IBlockState state) {
-    return settings.opaque;
+    return settings != null && settings.opaque;
   }
 
   @Override

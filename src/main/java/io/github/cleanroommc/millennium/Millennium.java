@@ -24,6 +24,9 @@ public class Millennium {
   public static final String NAME = "Millennium";
   public static final String VERSION = "@VERSION@";
 
+  @Mod.Instance
+  public static Millennium INSTANCE;
+
   @SidedProxy(
       clientSide = "io.github.cleanroommc.millennium.proxy.ClientProxy",
       serverSide = "io.github.cleanroommc.millennium.proxy.CommonProxy"

@@ -11,8 +11,12 @@ public class MillenniumTextures {
     // Bundle
     textures.put("item/bundle.png");
     textures.put("item/bundle_filled.png");
-    // Barrel
-
+    // Barrel, Shulker Box
+    textures.put("gui/container/shulker_box.png");
+    textures.put("block/barrel_bottom.png");
+    textures.put("block/barrel_side.png");
+    textures.put("block/barrel_top.png");
+    textures.put("block/barrel_top_open.png");
     AssetMoverAPI.fromMinecraft("1.18.1", textures);
   }
 }

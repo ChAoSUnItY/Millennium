@@ -12,7 +12,7 @@ class AssetHashMap extends Object2ObjectOpenHashMap<String, String> {
 
   void put(String subPath) {
     put(
-        String.format("assets/minecraft/%s/%s", resourceType, subPath),
-        String.format("assets/millennium/%s/%s", resourceType, subPath));
+        "assets/minecraft/" + resourceType + "/" + subPath,
+        "assets/millennium/" + resourceType + "/" + subPath);
   }
 }
